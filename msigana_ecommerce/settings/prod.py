@@ -50,26 +50,26 @@ INSTALLED_APPS = [
 ]
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': config('PROD_DATABASE_NAME'),
-#         'USER': config('PROD_DATABASE_USER'),
-#         'PASSWORD': config('PROD_DATABASE_PASSWORD'),
-#         'HOST': config('PROD_DATABASE_HOST'),
-#         'PORT': config('PROD_DATABASE_PORT'),
-#         'OPTIONS': {
-#             'sslmode': 'require',
-#         },
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('PROD_DATABASE_NAME'),
+        'USER': config('PROD_DATABASE_USER'),
+        'PASSWORD': config('PROD_DATABASE_PASSWORD'),
+        'HOST': config('PROD_DATABASE_HOST'),
+        'PORT': config('PROD_DATABASE_PORT'),
+        'OPTIONS': {
+            'sslmode': 'require',
+        },
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
