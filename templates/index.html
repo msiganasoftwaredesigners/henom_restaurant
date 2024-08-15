@@ -1,0 +1,762 @@
+{% extends 'base.html' %} {% load static %} 
+{% block title %}{{footer.company_main_page_title}}{% endblock %} 
+{% block content %} 
+<style>
+  @layer utilities {
+      .custom-inclined {
+        clip-path: polygon(10% 0, 90% 0, 100% 10%, 100% 90%, 90% 100%, 10% 100%, 0 90%, 0 10%);
+        border-radius: 0.75rem; /* This is equivalent to rounded-xl in Tailwind */
+      }
+    }
+    
+</style>
+<div class="grid grid-cols-4 md:grid-cols-12 ">
+  <div class="col-span-12">
+    <section class="section-name">
+      <!-- banner -->
+       
+      <div
+      class="bg-cover bg-no-repeat bg-center pt-16 pb-8 md:py-36 relative"
+      {% if not footer.main_page_image.url %}
+      <p>Please insert main page image</p>
+      {% else %}
+      style="background-image: url({{footer.main_page_image.url}})">
+      {% endif %}
+      <div class="container mx-auto px-4 sm:px-8 md:px-16 lg:px-16 xl:px-32 2xl:px-64">
+          <div class="flex flex-col lg:flex-row items-center">
+              <!-- banner content -->
+              <div class="lg:w-1/2 w-full lg:pr-8">
+                <h1 class="xl:text-6xl md:text-5xl text-6xl  mb-4 ml-4 lg:ml-0 card text-[#e49124]" style="font-size:84px;">
+                  <span class="bg-slate-50 bg-opacity-30 px-3 py-2 melaku">
+                    {{footer.company_main_page_title}}
+                  </span>
+                  <br class="hidden sm:block" />
+                </h1>
+                
+                  <p class="text-lg text-white leading-relaxed  md:ml-8 lg:ml-0 tracking-tighter-custom ma">
+                    {{footer.company_description}}
+                  </p>
+
+                  <!-- banner button -->
+                  <div class="mt-12  text-center card">
+                      <a
+                          href="{% url 'reservation' %}"
+                          class="bg-blue-950 border text-2xl border-slate-500  text-white px-8 py-3 font-medium rounded-md  hover:bg-slate-600 hover:text-primary transition mks">
+                          Book a Table
+                      </a>
+                  </div>
+              </div>
+              <!-- video component -->
+              <div class="lg:w-1/2 w-full mt-8 lg:mt-0 relative">
+                  <div class="relative" style="padding-top: 56.25%;">
+                      <div class="absolute inset-0 flex items-center justify-center cursor-pointer">
+                          <i class="fas fa-play text-6xl text-white"></i>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+<!-- Modal for Video -->
+<div id="videoModal" class="hidden fixed inset-0 bg-black bg-opacity-75 items-center justify-center z-50">
+  <div class="relative w-full max-w-full sm:max-w-lg md:max-w-4xl lg:max-w-5xl">
+      <div class="relative" style="padding-top: 56.25%;">
+          <iframe id="main-video" class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/ZAdx4Hy6nXg" title="Yehiwote hiwot by Tilahun Gesese" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+      <button id="closeModal" class="absolute top-2 right-2 text-white text-2xl">&times;</button>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+      $('.fa-play').click(function(){
+          $('#videoModal').removeClass('hidden').addClass('flex');
+      });
+
+      $('#closeModal, #videoModal').click(function(event){
+          if (event.target.id == 'videoModal' || event.target.id == 'closeModal') {
+              $('#videoModal').removeClass('flex').addClass('hidden');
+              var iframe = $('#main-video')[0];
+              var src = iframe.src;
+              iframe.src = src; // Reset the video by reassigning the src
+          }
+      });
+  });
+</script>
+
+
+         <!-- ====== About/chef Section Start -->
+    <section
+    id="about"
+    class="bg-gray-100 px-2 pb-8 pt-20 dark:bg-dark-2 lg:pb-[70px] lg:pt-[120px]2"
+  >
+    <div class="md:mx-16 2xl:mx-32 px-2">
+      <div class="wow fadeInUp" data-wow-delay=".2s">
+        <div class="-mx-4 flex flex-wrap items-center">
+          <div class="w-full px-4 lg:w-1/2">
+            <div class="mb-12 max-w-[540px] lg:mb-0">
+           
+              <h2 class="mb-5 text-[38px] md:text-5xl  leading-tight text-dark dark:text-white sm:text-[40px] sm:leading-[1.2] card mks">
+           Henom Restaurant
+              </h2>
+              <p class="mb-10 text-base leading-relaxed text-body-color dark:text-dark-6 card me">
+                Henom Restaurant is a celebrated culinary expert known for his innovative approach to gastronomy and his passion for creating unforgettable dining experiences. With a career spanning over two decades, he has made a significant impact on the culinary world, blending traditional techniques with modern creativity to craft dishes that delight the senses.
+              </p>
+      
+              <!-- Hidden content -->
+              <div id="moreContent" class="hidden">
+              
+                <h2 class="mb-5 text-lg font-bold leading-tight text-dark dark:text-white sm:text-[40px] sm:leading-[1.2] mks">
+                  Philosophy and Style
+                </h2>
+                <p class="mb-10 text-base leading-relaxed text-body-color dark:text-dark-6 me">
+                  Chef Henok believes in the power of food to bring people together and create lasting memories. His cooking philosophy revolves around using fresh, high-quality ingredients, often sourced locally and sustainably. He is known for his meticulous attention to detail, innovative presentation, and a deep respect for the culinary traditions that inspire his creations.
+                  His dishes are a testament to his creativity and skill, often featuring unexpected flavor combinations and artistic presentations that captivate both the eye and the palate. Chef Henok’s menu is a journey through flavors, offering diners a unique and memorable culinary experience.
+                </p>
+              </div>
+      
+              <button id="toggleButton" class="inline-flex items-center rounded-md border border-primary bg-blue-950 px-7 py-3 text-center text-base font-medium text-white hover:border-blue-dark hover:bg-blue-dark card mks">
+                Read More
+              </button>
+            </div>
+          </div>
+      
+          <div class="w-full px-4 lg:w-1/2">
+            <div class="-mx-2 flex flex-wrap sm:-mx-4 lg:-mx-2 xl:-mx-4">
+              <div class="w-full px-2 sm:w-1/2 sm:px-4 lg:px-2 xl:px-4">
+                <div class="mb-4 sm:mb-8 sm:h-[400px] md:h-[540px] lg:h-[400px] xl:h-[500px] card">
+                  <img src="{% static 'images/chef/henokc.jpg' %}" alt="Chef Henok" class="h-full w-full object-cover object-center" />
+                </div>
+              </div>
+      
+              <div class="w-full px-2 sm:w-1/2 sm:px-4 lg:px-2 xl:px-4">
+                <div class="mb-4 sm:mb-8 sm:h-[220px] md:h-[346px] lg:mb-4 lg:h-[225px] xl:mb-8 xl:h-[310px] card">
+                  <img src="{% static 'images/chef/henokc1.jpg' %}" alt="Chef Henok" class="h-full w-full object-cover object-center" />
+                </div>
+      
+                <div class="relative z-10 mb-4 flex items-center justify-center overflow-hidden bg-blue-950 px-6 py-12 sm:mb-8 sm:h-[160px] sm:p-5 lg:mb-4 xl:mb-8 card">
+                  <div>
+                    <span class="block text-5xl font-extrabold text-white meee">03</span>
+                    <span class="block  font-semibold text-white king text-3xl">We have more than</span>
+                    <span class="block text-base font-medium text-white text-opacity-70 mks">Years of experience</span>
+                  </div>
+                  <div>
+                    <span class="absolute left-0 top-0 -z-10">
+                      <svg width="106" height="144" viewBox="0 0 106 144" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect opacity="0.1" x="-67" y="47.127" width="113.378" height="131.304" transform="rotate(-42.8643 -67 47.127)" fill="url(#paint0_linear_1416_214)" />
+                        <defs>
+                          <linearGradient id="paint0_linear_1416_214" x1="-10.3111" y1="47.127" x2="-10.3111" y2="178.431" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="white" />
+                            <stop offset="1" stop-color="white" stop-opacity="0" />
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                    </span>
+                    <span class="absolute right-0 top-0 -z-10">
+                      <svg width="130" height="97" viewBox="0 0 130 97" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect opacity="0.1" x="0.86792" y="-6.67725" width="155.563" height="140.614" transform="rotate(-42.8643 0.86792 -6.67725)" fill="url(#paint0_linear_1416_215)" />
+                        <defs>
+                          <linearGradient id="paint0_linear_1416_215" x1="78.6495" y1="-6.67725" x2="78.6495" y2="133.937" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="white" />
+                            <stop offset="1" stop-color="white" stop-opacity="0" />
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                    </span>
+                    <span class="absolute bottom-0 right-0 -z-10">
+                      <svg width="175" height="104" viewBox="0 0 175 104" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect opacity="0.1" x="175.011" y="108.611" width="101.246" height="148.179" transform="rotate(137.136 175.011 108.611)" fill="url(#paint0_linear_1416_216)" />
+                        <defs>
+                          <linearGradient id="paint0_linear_1416_216" x1="225.634" y1="108.611" x2="225.634" y2="256.79" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="white" />
+                            <stop offset="1" stop-color="white" stop-opacity="0" />
+                          </linearGradient>
+                        </defs>
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const moreContent = document.getElementById('moreContent');
+        const toggleButton = document.getElementById('toggleButton');
+    
+        toggleButton.addEventListener('click', function() {
+          if (moreContent.classList.contains('hidden')) {
+            moreContent.classList.remove('hidden');
+            toggleButton.textContent = 'Read Less';
+          } else {
+            moreContent.classList.add('hidden');
+            toggleButton.textContent = 'Read More';
+          }
+        });
+      });
+    </script>
+    <!-- Tailwind CSS Section with Title, Subtitle, and Button -->
+    
+  </section>
+  <!-- ====== About/chef Section End -->
+  <div class="bg-blue-950 flex flex-col md:flex-row text-white py-20">
+    <div class="flex-1 flex flex-col items-center justify-center text-center mb-24 md:mb-0">
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-6 card melaku">MENUS</h2>
+      <p class="text-xl mb-8 card ma">What's your favorite Food?</p>
+      <a href="{% url 'menus' %}" class="bg-white text-blue-950 font-semibold py-2 px-4 rounded-md mks">
+        VIEW MENUS
+      </a>
+    </div>
+    <div class="flex-1 flex flex-col items-center justify-center text-center">
+      <h2 class="text-4xl md:text-5xl font-extrabold mb-6 card melaku">RESERVATIONS</h2>
+      <p class="text-xl mb-8 card ma">Book your table now!</p>
+      <a href="{% url 'reservation' %}" class="bg-white text-blue-950 font-semibold py-2 px-4 rounded-md mks">
+        MAKE A RESERVATION
+      </a>
+    </div>
+  </div>
+  
+  
+
+      <div class="md:ml-16 xl:ml-32">
+        <header class="section-heading">
+          <h2
+            class="text-3xl md:text-3xl font-medium text-gray-800 uppercase pt-4 mb-4 mt-4 px-6 md:px-0 card meee"
+          >
+            Gallery
+          </h2>
+        </header>
+          <!-- product wrapper -->
+          <div id="product-list" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-1 2xl:gap-3 lg:pr-16 xl:pr-32 2xl:pr-32 mb-6 lg:mb-8">
+            {% for product in most_liked_products %}
+            <div class="flex flex-col card custom-inclined">
+                <div class="m-2 bg-white shadow-md rounded-lg overflow-hidden flex-grow">
+                    <div class="relative group">
+                        <div class="w-full h-64 2xl:h-80 overflow-hidden relative">
+                            {% with product.get_main_image as main_image %}
+                            {% if main_image %}
+                                <img class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110" src="{{ main_image.image.url }}" alt="{{ product.product_name }}">
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <span class="text-blue-950 text-lg md:text-2xl font-thin p-2 rounded"><i class="fas fa-star"></i> Henom</span>
+                                </div>
+                            {% endif %}
+                            {% endwith %}
+                        </div>
+                      </div>
+                    <div class="bg-blue-950 hover:text-purple-400 text-center py-2 rounded-b mt-1">
+                        <div class="text-white w-full inline-block mks">{{ product.product_name|slice:":16"|capfirst }}</div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- ad section -->
+          <a href="{{advertizement_second.advertizement_second_url}}" class=" px-2 pr-2 md:pr-32 pt-6 md:mt-32">
+            <img src="{{ advertizement_second.advertizement_second_image.url }}" class="px-2 md:px-0 lg:pr-16 xl:pr-32 2xl:pr-32 h-32 md:h-64 w-full object-cover" />
+          </a> 
+      </div>
+      
+    </section>
+    <div class="relative w-full h-96 md:h-[500px] flex flex-col md:flex-row items-center justify-center bg-cover bg-center" style="background-image: url('{% static 'images/happenings/happening.jpg' %}');">
+      <!-- First Section -->
+      <div class="mb-16 md:mb-0 md:flex md:flex-col md:items-center text-center md:text-left md:mr-32 card">
+        <h1 class="text-4xl md:text-4xl xl:text-5xl 2xl:mr-12 font-bold text-white melaku">EVENTS AT HENOM</h1>
+        <div class="flex justify-center md:justify-center space-x-4 mt-4 md:mt-8">
+          <a href="{% url 'happenings' %}" class="bg-blue-950 text-white font-semibold hover:bg-slate-500 text-lg md:text-xl py-2 md:py-3 px-4 rounded-md mks">
+            HAPPENINGS
+          </a>
+        </div>
+      </div>
+    
+      <!-- Second Section -->
+      <div class="md:flex md:flex-col md:items-center text-center md:text-left card">
+        <h1 class="text-4xl md:text-4xl xl:text-5xl font-bold text-white melaku">CATERING SERVICES</h1>
+        <div class="flex justify-center md:justify-center space-x-4 mt-4 md:mt-8">
+          <a href="{% url 'catering' %}" class="bg-blue-950 text-white font-semibold hover:bg-slate-500 text-lg md:text-xl py-2 md:py-3 px-4 rounded-md mks">
+          CATERING
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    
+     <!-- ====== Testimonial Section Start -->
+     <section
+     id="testimonials"
+     class="overflow-hidden bg-gray-100 py-20 dark:bg-dark-2 md:py-[70px] px-2"
+   >
+     <div class="container mx-auto px-2">
+       <div class="-mx-4 flex flex-wrap justify-center">
+         <div class="w-full px-4">
+           <div class="mx-auto mb-[60px] max-w-[485px] text-center">
+             <h2
+               class="mb-3 text-3xl font-bold leading-[1.2] text-dark dark:text-white sm:text-4xl md:text-[34px] card melaku"
+             >
+               What our Customers Say
+             </h2>
+             <p class="text-base text-start md:text-center text-body-color dark:text-dark-6 card me">
+              At Henok Restaurant, we take pride in offering exceptional dining experiences.
+               Don't just take our word for it—see what our guests have to say! Your feedback helps us improve and ensures every visit is memorable.
+             </p>
+           </div>
+         </div>
+       </div>
+
+       <div class="-m-5">
+         <div class="swiper testimonial-carousel common-carousel p-5">
+           <div class="swiper-wrapper">
+             <div class="swiper-slide card">
+               <div
+                 class="rounded-xl bg-white px-4 py-[30px] shadow-testimonial dark:bg-dark sm:px-[30px]"
+               >
+                 <div class="mb-[18px] flex items-center gap-[2px]">
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                 </div>
+
+                 <p class="mb-6 text-base text-body-color dark:text-dark-6 me">
+                   “Just wanted to drop a note to say thank you for the fantastic meal last night. Everything from the appetizers to the dessert was outstanding. Can't wait to come back for more!’’
+                 </p>
+
+                 <a href="#" class="flex items-center gap-4">
+                   <div class="h-[50px] w-[50px] overflow-hidden rounded-full">
+                     <img
+                       src="{% static 'images/human.jpg' %}"
+                       alt="author"
+                       class="h-[50px] w-[50px] overflow-hidden rounded-full"
+                     />
+                   </div>
+
+                   <div>
+                     <h3
+                       class="text-sm font-semibold text-dark dark:text-white me"
+                     >
+                       Mahlet Teshome
+                     </h3>
+                   </div>
+                 </a>
+               </div>
+             </div>
+
+             <div class="swiper-slide  card">
+               <div
+                 class="rounded-xl bg-white px-4 py-[30px] shadow-testimonial dark:bg-dark sm:px-[30px]"
+               >
+                 <div class="mb-[18px] flex items-center gap-[2px]">
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                 </div>
+
+                 <p class="mb-6 text-base text-body-color dark:text-dark-6 me">
+                   “Thank you for a wonderful dining experience! The service was impeccable, the food delicious, and the ambiance perfect. Looking forward to visiting again soon!’’
+                 </p>
+
+                 <a href="#" class="flex items-center gap-4">
+                   <div class="h-[50px] w-[50px] overflow-hidden rounded-full">
+                     <img
+                       src="{% static 'images/human.jpg' %}"
+                       alt="author"
+                       class="h-[50px] w-[50px] overflow-hidden rounded-full"
+                     />
+                   </div>
+
+                   <div>
+                     <h3
+                       class="text-sm font-semibold text-dark dark:text-white me"
+                     >
+                       Keidr Jemal
+                     </h3>
+                   </div>
+                 </a>
+               </div>
+             </div>
+
+             <div class="swiper-slide card">
+               <div
+                 class="rounded-xl bg-white px-4 py-[30px] shadow-testimonial dark:bg-dark sm:px-[30px]"
+               >
+                 <div class="mb-[18px] flex items-center gap-[2px]">
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                 </div>
+
+                 <p class="mb-6 text-base text-body-color dark:text-dark-6 me">
+                   “A hidden gem, this place was as unexpected as fenomenal!
+                   The quality of the food is great and the way it's presented is another level of detail and beauty.
+                   Delicious and beautiful dishes, intimate and nice atmosfere, super friendly chef and staff, and a mix of local dishes and innovative options.’
+                 </p>
+
+                 <a href="#" class="flex items-center gap-4">
+                   <div class="h-[50px] w-[50px] overflow-hidden rounded-full">
+                     <img
+                       src="{% static 'images/human.jpg' %}"
+                       alt="author"
+                       class="h-[50px] w-[50px] overflow-hidden rounded-full"
+                     />
+                   </div>
+
+                   <div>
+                     <h3 class="text-sm font-semibold text-dark dark:text-white me">
+                      Leonor cid
+                     </h3>
+                    
+                   </div>
+                 </a>
+               </div>
+             </div>
+
+             <div class="swiper-slide">
+               <div
+                 class="rounded-xl bg-white px-4 py-[30px] shadow-testimonial dark:bg-dark sm:px-[30px]"
+               >
+                 <div class="mb-[18px] flex items-center gap-[2px]">
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                 </div>
+
+                 <p class="mb-6 text-base text-body-color dark:text-dark-6 me">
+                   “I had an amazing time dining at your establishment. The food was exquisite, the atmosphere welcoming, and the staff attentive. Truly a memorable experience!’’
+                 </p>
+
+                 <a href="#" class="flex items-center gap-4">
+                   <div class="h-[50px] w-[50px] overflow-hidden rounded-full">
+                     <img
+                       src="{% static 'images/human.jpg' %}"
+                       alt="author"
+                       class="h-[50px] w-[50px] overflow-hidden rounded-full"
+                     />
+                   </div>
+
+                   <div>
+                     <h3
+                       class="text-sm font-semibold text-dark dark:text-white me"
+                     >
+                       Sabo Masties
+                   </h3>
+                   </div>
+                 </a>
+               </div>
+             </div>
+
+             <div class="swiper-slide">
+               <div
+                 class="rounded-xl bg-white px-4 py-[30px] shadow-testimonial dark:bg-dark sm:px-[30px]"
+               >
+                 <div class="mb-[18px] flex items-center gap-[2px]">
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                 </div>
+
+                 <p class="mb-6 text-base text-body-color dark:text-dark-6 me">
+                   “Just wanted to drop a note to say thank you for the fantastic meal last night. Everything from the appetizers to the dessert was outstanding. Can't wait to come back for more!’’
+                 </p>
+
+                 <a href="#" class="flex items-center gap-4">
+                   <div class="h-[50px] w-[50px] overflow-hidden rounded-full">
+                     <img
+                       src="{% static 'images/human.jpg' %}"
+                       alt="author"
+                       class="h-[50px] w-[50px] overflow-hidden rounded-full"
+                     />
+                   </div>
+
+                   <div>
+                     <h3
+                       class="text-sm font-semibold text-dark dark:text-white me"
+                     >
+                       Musharof Chowdhury
+                     </h3>
+                   </div>
+                 </a>
+               </div>
+             </div>
+
+             <div class="swiper-slide">
+               <div
+                 class="rounded-xl bg-white px-4 py-[30px] shadow-testimonial dark:bg-dark sm:px-[30px]"
+               >
+                 <div class="mb-[18px] flex items-center gap-[2px]">
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                   <img
+                     src="{% static 'images/testimonials/icon-star.svg' %}"
+                     alt="star icon"
+                   />
+                 </div>
+
+                 <p class="mb-6 text-base text-body-color dark:text-dark-6 me">
+                   “Just wanted to drop a note to say thank you for the fantastic meal last night. Everything from the appetizers to the dessert was outstanding. Can't wait to come back for more!’’
+                 </p>
+
+                 <a href="#" class="flex items-center gap-4">
+                   <div class="h-[50px] w-[50px] overflow-hidden rounded-full">
+                     <img
+                       src="{% static 'images/human.jpg' %}"
+                       alt="author"
+                       class="h-[50px] w-[50px] overflow-hidden rounded-full"
+                     />
+                   </div>
+
+                   <div>
+                     <h3
+                       class="text-sm font-semibold text-dark dark:text-white me"
+                     >
+                       William Smith
+                     </h3>
+                   </div>
+                 </a>
+               </div>
+             </div>
+           </div>
+
+           <div class="pt-8 flex items-center justify-center gap-1">
+             <div class="swipe-prev pl-40 md:pl-[430px] 2xl:pl-[550px] pr-3">
+              <i class="fa fa-arrow-circle-left text-blue-950 text-5xl" aria-hidden="true"></i>
+             </div>
+
+             <div class="swipe-next pr-48 md:pr-[430px] 2xl-[550px]">
+              <i class="fa fa-arrow-circle-right text-blue-950 text-5xl " aria-hidden="true"></i>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+     </div>
+     </div>
+     </section>
+      <!-- ====== Testimonial Section End -->
+ 
+      <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+       <script src="{% static 'js/main.js' %}"></script> 
+      <script>
+        // ==== for menu scroll
+        const pageLink = document.querySelectorAll(".ud-menu-scroll");
+  
+        pageLink.forEach((elem) => {
+          elem.addEventListener("click", (e) => {
+            e.preventDefault();
+            document.querySelector(elem.getAttribute("href")).scrollIntoView({
+              behavior: "smooth",
+              offsetTop: 1 - 60,
+            });
+          });
+        });
+  
+        // section menu active
+        function onScroll(event) {
+          const sections = document.querySelectorAll(".ud-menu-scroll");
+          const scrollPos =
+            window.pageYOffset ||
+            document.documentElement.scrollTop ||
+            document.body.scrollTop;
+  
+          for (let i = 0; i < sections.length; i++) {
+            const currLink = sections[i];
+            const val = currLink.getAttribute("href");
+            const refElement = document.querySelector(val);
+            const scrollTopMinus = scrollPos + 73;
+            if (
+              refElement.offsetTop <= scrollTopMinus &&
+              refElement.offsetTop + refElement.offsetHeight > scrollTopMinus
+            ) {
+              document
+                .querySelector(".ud-menu-scroll")
+                .classList.remove("active");
+              currLink.classList.add("active");
+            } else {
+              currLink.classList.remove("active");
+            }
+          }
+        }
+  
+        window.document.addEventListener("scroll", onScroll);
+  
+        // Testimonial
+        const testimonialSwiper = new Swiper(".testimonial-carousel", {
+          slidesPerView: 1,
+          spaceBetween: 30,
+  
+          // Navigation arrows
+          navigation: {
+            nextEl: ".swipe-next",
+            prevEl: ".swipe-prev",
+          },
+  
+          breakpoints: {
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 30,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 30,
+            },
+            1280: {
+              slidesPerView: 3,
+              spaceBetween: 30,
+            },
+          },
+        });
+      </script>
+  
+      <script>
+        let page = 2; // start from the second page
+        let isLoading = false; // flag to prevent multiple simultaneous requests
+        
+        window.onscroll = function (ev) {
+          if (!isLoading && window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+            isLoading = true; // set the flag to true to indicate that a request is in progress
+        
+            fetch(`/store?page=${page}`)
+              .then((response) => {
+                if (!response.ok) {
+                  throw new Error("Network response was not ok");
+                }
+                return response.json();
+              })
+              .then((data) => {
+                if (data.end) {
+                  window.onscroll = null; // remove the event handler when there are no more products
+                } else {
+                  data.products.forEach((product) => {
+                    // create a new product card
+                    let card = document.createElement("div");
+                    card.className = "flex flex-col";
+                    card.innerHTML = `
+                      <div class="m-2 bg-white shadow-md rounded-lg overflow-hidden flex-grow">
+                        <a href="${product.get_store_url}">
+                          <div class="w-full sm:h-32 md:h-64 overflow-hidden">
+                            <img class="w-full h-full object-cover" src="${product.product_images}" alt="${product.product_name}">
+                          </div>
+                        </a>
+                        <div class="sm:p-3 md:p-6">
+                          <a href="${product.get_store_url}" class="block text-lg font-semibold text-gray-800 hover:text-blue-600">${product.product_name}</a>
+                          <div class="my-2 md:my-4 text-blue-600 md:text-2xl">${product.product_price} birr</div>
+                        </div>
+                      </div>
+                    `;
+                    // append the new product card to the product list
+                    document.querySelector("#product-list").appendChild(card);
+                  });
+                  page++;
+                }
+              })
+              .catch((error) => {
+                console.error("There has been a problem with your fetch operation:", error);
+              })
+              .finally(() => {
+                isLoading = false; // set the flag back to false when the request is complete
+              });
+          }
+        };
+        
+      </script>
+{% endblock %}
