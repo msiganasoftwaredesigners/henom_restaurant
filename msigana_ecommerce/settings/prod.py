@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'reservations.apps.ReservationsConfig',
     'catering.apps.CateringConfig',
     'menu.apps.MenuConfig',
+    'happening.apps.HappeningConfig',
     'nested_admin',
     'tailwind',
     'theme',
