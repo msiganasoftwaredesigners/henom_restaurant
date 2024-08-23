@@ -3,11 +3,11 @@
 {% block title %}Happenings{% endblock %}
 {% block content %}
 <div class="relative w-full h-80 md:h-[500px] flex items-center justify-center bg-cover bg-center" style="background-image: url('{% static 'images/happenings/happening.jpg' %}');">
-  <h1 class="text-4xl md:text-5xl font-bold text-white melaku">EVENTS AT HENOM</h1>
+  <h1 class="text-4xl md:text-5xl font-bold text-white cinzel">EVENTS AT HENOM</h1>
 </div>
 <div class="bg-slate-100">
 <div class=" mx-auto 2xl:mx-48 px-4 py-8 text-center bg-slate-100">
-  <h2 class="text-sm md:text-xl font-semibold mb-6 melaku">Find out what's happening at the Henom Restaurant</h2>
+  <h2 class="text-sm md:text-xl font-semibold mb-6 volkhov">Find out what's happening at the Henom Restaurant</h2>
   
   <div class="grid grid-cols-1 md:grid-cols-2 2xl:gap-6 md:space-x-6 md:mx-32 2xl:mx-64">
     {% for event in events %}
@@ -26,8 +26,8 @@
   <div class="relative group bg-slate-100 overflow-hidden card mt-4">
     <img src="{{ event.image.url }}" alt="{{ event.title }}" class="w-full h-80 object-cover custom-inclined transform transition-transform duration-300 group-hover:scale-110">
     <div class="p-4">
-      <h3 class="text-lg font-semibold mks">{{ event.title }}, {{ event.event_date|date:"F j" }}</h3>
-      <p class="me">{{ event.description }}</p>
+      <h3 class="text-lg font-semibold cinzel">{{ event.title }}, {{ event.event_date|date:"F j" }}</h3>
+      <p class="volkhov">{{ event.description }}</p>
     </div>
   </div>
   {% endfor %}

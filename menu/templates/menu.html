@@ -23,7 +23,7 @@
 
   <!-- Overlay for Slideshow -->
   <div class="absolute inset-0 flex flex-col items-center justify-center text-white">
-      <h1 class="text-5xl md:text-5xl font-bold mb-4 melaku">MENUS</h1>
+      <h1 class="text-5xl md:text-5xl font-bold mb-4 cinzel">MENUS</h1>
       <div class="flex gap-4">
           <a href="#" id="slideshow-food-menu-btn" class="bg-green-600 px-4 py-2 rounded hover:bg-blue-900 text-2xl text-white mks">Food Menu</a>
           <a href="#" id="slideshow-drink-menu-btn" class="bg-blue-950 px-4 py-2 rounded hover:bg-blue-900 text-2xl text-white mks">Drink Menu</a>
@@ -46,11 +46,11 @@
         <div class="menu-card bg-white shadow-lg rounded-lg overflow-hidden border-2 border-blue-950 mb-6 mx-3">
             <div class="p-6">
                 <div class="bg-slate-500 rounded-md">
-                    <h2 class="text-xl font-bold mb-4 py-2 text-center text-white mks">{{ group }}</h2>
+                    <h2 class="text-xl font-bold mb-4 py-2 text-center text-white cinzel">{{ group }}</h2>
                 </div>
                 {% for item in items %}
                 <div class="mb-4">
-                    <h3 class="font-semibold">{{ item.name }} <span class="text-blue-950 ml-32">{{ item.price }} birr</span></h3>
+                    <h3 class="font-semibold cinzel">{{ item.name }} <span class="text-blue-950 ml-32">{{ item.price }} birr</span></h3>
                     <p>{{ item.description }}</p>
                     <hr class="h-0.5 my-1 bg-blue-950 border-0 dark:bg-gray-700">
                 </div>
