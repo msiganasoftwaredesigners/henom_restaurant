@@ -29,10 +29,16 @@ class MenuCategoryAdmin(admin.ModelAdmin):
 
         super().save_model(request, obj, form, change)
 
+class MenuGroupAdminForm(forms.ModelForm):
+    class Meta:
+        model = MenuGroup
+        fields = '__all__'
+        exclude = ['date']  # Exclude 'date' field from the admin form
+
 class MenuGroupAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'menu_type', 'slug')
+    form = MenuGroupAdminForm
+    list_display = ('id', 'name', 'menu_type', 'slug', 'date')
     search_fields = ('name', 'menu_type__name', 'slug')
-    prepopulated_fields = {"slug": ("name",)}
 
     def save_model(self, request, obj, form, change):
         if not obj.slug:

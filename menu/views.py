@@ -1,26 +1,22 @@
 from django.shortcuts import render
-from .models import MenuCategory, MenuItem
+from .models import MenuCategory, MenuItem, MenuGroup
 from collections import defaultdict
 
 def menu_view(request):
     # Get all menu categories
     categories = MenuCategory.objects.all()
 
-    # Get all food items
-    food_items = MenuItem.objects.filter(menu_type__name='food')
-
-    # Group food items by menu_group
+    # Get all food items, ordered by menu_group's date
     food_menu_groups = defaultdict(list)
-    for item in food_items:
-        food_menu_groups[item.menu_group].append(item)
+    for group in MenuGroup.objects.filter(menu_type__name='food').order_by('date'):
+        food_items = MenuItem.objects.filter(menu_type=group.menu_type, menu_group=group)
+        food_menu_groups[group] = list(food_items)
 
-    # Get all drink items
-    drink_items = MenuItem.objects.filter(menu_type__name='drink')
-
-    # Group drink items by menu_group
+    # Get all drink items, ordered by menu_group's date
     drink_menu_groups = defaultdict(list)
-    for item in drink_items:
-        drink_menu_groups[item.menu_group].append(item)
+    for group in MenuGroup.objects.filter(menu_type__name='drink').order_by('date'):
+        drink_items = MenuItem.objects.filter(menu_type=group.menu_type, menu_group=group)
+        drink_menu_groups[group] = list(drink_items)
 
     context = {
         'categories': categories,

@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from django.db.models import Q
+from django.utils import timezone 
 
 class MenuCategory(models.Model):
     name = models.CharField(max_length=255, unique=True)
@@ -18,6 +19,7 @@ class MenuGroup(models.Model):
     name = models.CharField(max_length=255)
     menu_type = models.ForeignKey(MenuCategory, related_name='groups', on_delete=models.CASCADE)
     slug = models.SlugField(max_length=255, blank=True)
+    date = models.DateTimeField(default=timezone.now)
 
     class Meta:
         unique_together = ('menu_type', 'slug')
@@ -41,7 +43,7 @@ class MenuItem(models.Model):
     menu_group = models.ForeignKey(MenuGroup, related_name='items', on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.DecimalField(max_digits=10, decimal_places=2 , blank=True, null=True)
 
     slug = models.SlugField(max_length=255, unique=True, blank=True)
 
