@@ -40,7 +40,7 @@ class Product(models.Model):
     product_name = models.CharField(max_length=150, unique=True)
     product_brand = models.CharField(max_length=150, blank=True,default='Custom')
     product_slug = models.SlugField(max_length=150, unique=True)
-    product_description = QuillField()
+    product_description = QuillField(blank=True, null=True)
     product_stock = models.IntegerField(blank=True, null=True)
     product_is_available = models.BooleanField(default=True)
     product_created_date = models.DateTimeField(auto_now_add=True)
