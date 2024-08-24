@@ -57,14 +57,3 @@ def update_profile(request):
     liked_products = request.user.liked_products.all()
 
     return render(request, 'profile.html', {'form': form, 'orders': orders, 'liked_products': liked_products})
-
-def ads_txt(request):
-    # Path to the Ads.txt file
-    ads_txt_path = os.path.join(settings.BASE_DIR, '../static', 'ads.txt')
-
-    # Read the contents of the Ads.txt file
-    with open(ads_txt_path, 'r') as f:
-        ads_txt_content = f.read()
-
-    # Return the contents of the Ads.txt file as the HTTP response
-    return HttpResponse(ads_txt_content, content_type='text/plain')
