@@ -14,12 +14,12 @@
 
 
         <nav class="hidden sm:flex space-x-12">
-            <a href="{% url 'hours-location' %}" class="text-white text-lg xl:text-xl hover:text-slate-200 transition mks">Hours & Location</a>
-            <a href="{% url 'menus' %}" class="text-white text-lg xl:text-xl hover:text-slate-200 transition mks">Menu</a>
-            <a href="{% url 'happenings' %}" class="text-white text-lg xl:text-xl hover:text-slate-200 transition mks">Happenings</a>
-            <a href="{% url 'catering' %}" class="text-white text-lg xl:text-xl hover:text-slate-200 transition mks">Catering</a>
-            <a href="{% url 'about-us' %}" class="text-white text-lg xl:text-xl hover:text-slate-200 transition mks">About Us</a>
-            <a href="{% url 'reservation' %}" class="text-white text-lg xl:text-xl hover:text-slate-200 transition mks">Reservations</a>
+            <a href="{% url 'hours-location' %}" class="text-white text-lg xl:text-xl hover:text-slate-200 transition volkhov">Hours & Location</a>
+            <a href="{% url 'menus' %}" class="text-white text-lg xl:text-xl hover:text-slate-200 transition volkhov">Menu</a>
+            <a href="{% url 'happenings' %}" class="text-white text-lg xl:text-xl hover:text-slate-200 transition volkhov">Happenings</a>
+            <a href="{% url 'catering' %}" class="text-white text-lg xl:text-xl hover:text-slate-200 transition volkhov">Catering</a>
+            <a href="{% url 'about-us' %}" class="text-white text-lg xl:text-xl hover:text-slate-200 transition volkhov">About Us</a>
+            <a href="{% url 'reservation' %}" class="text-white text-lg xl:text-xl hover:text-slate-200 transition volkhov">Reservations</a>
             {% comment %} <a href="{% url 'online-order' %}" class="text-white text-lg xl:text-xl hover:text-slate-200 transition">Online Order</a> {% endcomment %}
         </nav>
         <div class="space-x-4  md:space-x-12 flex items-center pl-64  md:pl-0 ">
@@ -80,7 +80,7 @@
             
             {% if user.is_authenticated %}
             {% if user.is_staff %}
-                <a href="{% url 'admin:index' %}" class="ml-64 md:ml-auto text-base md:text-xl  justify-self-end text-white hover:text-slate-200 transition pr-6 md:pr-8  mks">
+                <a href="{% url 'admin:index' %}" class="ml-64 md:ml-auto text-base md:text-xl  justify-self-end text-white hover:text-slate-200 transition pr-6 md:pr-8  volkhov">
                     Admin
                 </a>
             {% else %}
@@ -92,7 +92,7 @@
             
             {% endif %}
         {% else %}
-            <a href="{% url 'account_login' %}" class="ml-auto justify-self-end text-white hover:text-slate-200 transition pl-4 pr-2 mks">
+            <a href="{% url 'account_login' %}" class="ml-auto justify-self-end text-white hover:text-slate-200 transition pl-4 pr-2 volkhov">
                 Login
             </a>
         {% endif %}
@@ -107,7 +107,7 @@
             <div class="text-2xl" id="menuBar">
                 <i class="fas fa-bars"></i>
             </div>
-            <div class="text-xs leading-3 mks">Menu</div>
+            <div class="text-xs leading-3 volkhov">Menu</div>
         </a>
       
         <div class="col-lg col-md-6 col-sm-12 col">
@@ -124,7 +124,7 @@
         </div>
     
         <a href="{% url 'home' %}" class="pl-2 relative">
-            <div class="w-12 h-12  font-bold text-md flex items-center justify-center  text-blue-950 pr-1 mks">
+            <div class="w-12 h-12  font-bold text-md flex items-center justify-center  text-blue-950 pr-1 volkhov">
                home
             </div>
             
@@ -144,12 +144,12 @@
             <div class="flex flex-col pt-8">
                
 
-                <a class="text-lg  text-gray-700 mb-1  pl-4 pt-4 mks" href="{% url 'hours-location' %}">Hours & Location</a>
-                <a class="text-lg  text-gray-700 mb-1  pl-4 pt-4 mks" href="{% url 'menus' %}">Menu</a>
-                <a class="text-lg  text-gray-700 mb-1 mks pl-4 pt-4" href="{% url 'happenings' %}">Happenings</a>
-                <a class="text-lg mks text-gray-700 mb-1 pl-4 pt-4" href="{% url 'catering' %}">Catering</a>
-                <a class="text-lg  text-gray-700 mb-1 mks pl-4 pt-4" href="{% url 'about-us'  %}">About Us</a>
-                <a class="text-lg  text-gray-700 mb-1 mks pl-4 pt-4" href="{% url 'reservation' %}">Reservations</a>
+                <a class="text-lg  text-gray-700 mb-1  pl-4 pt-4 volkhov" href="{% url 'hours-location' %}">Hours & Location</a>
+                <a class="text-lg  text-gray-700 mb-1  pl-4 pt-4 volkhov" href="{% url 'menus' %}">Menu</a>
+                <a class="text-lg  text-gray-700 mb-1 pl-4 pt-4 volkhov" href="{% url 'happenings' %}">Happenings</a>
+                <a class="text-lg text-gray-700 mb-1 pl-4 pt-4 volkhov" href="{% url 'catering' %}">Catering</a>
+                <a class="text-lg  text-gray-700 mb-1 volkhov pl-4 pt-4" href="{% url 'about-us'  %}">About Us</a>
+                <a class="text-lg  text-gray-700 mb-1 volkhov pl-4 pt-4" href="{% url 'reservation' %}">Reservations</a>
                 {% comment %} <a class="text-lg font-semibold text-gray-700 mb-1 font-roboto pl-4 pt-4" href="{% url 'online-order' %}">Online Order</a> {% endcomment %}
                 {% comment %} {% for category in links %}
                 <a class="block px-4 py-2 font-medium transition hover:bg-gray-100 category-link capitalize" href="{{ category.get_url }}">{{category.category_name}}</a>
