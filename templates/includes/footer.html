@@ -77,7 +77,7 @@
     </div>
 </div>
 <div class="bg-blue-900 mb-16 md:mb-0 px-4 md:px-16 lg:px-16 xl:px-48 w-full">
-    <div class="py-4 md:py-4 w-full">
+    <div class="py-4 md:py-4 md:pb-0 w-full">
         <div class="container flex items-center justify-between">
             <p class="text-white text-sm md:text-lg me">Copyright &copy; <span class="text-white" id="copyright-year"></span></p>
             <div class="col-md-8 text-md-center">
@@ -85,7 +85,13 @@
             </div>
         </div>
     </div>
+    <div class="py-4 pt-0 md:py-4  md:pt-0w-full">
+        <div class="container flex items-center justify-center">
+            <p class="text-white text-sm md:text-lg me text-center">Design by  <a href="https://msigana.com" clss="ml-4">Msigana Technologies</a></p>
+        </div>
+    </div>
 </div>
+
 <script>
     document.getElementById("copyright-year").innerHTML = new Date().getFullYear();
 </script>
