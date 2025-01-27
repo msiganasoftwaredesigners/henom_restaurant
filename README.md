@@ -4,7 +4,7 @@ pip freeze > requirements.txt
 
 python manage.py makemigrations --dry-run --verbosity 3
 
-
+#
 
 
 # Import the necessary models
