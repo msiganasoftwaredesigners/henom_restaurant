@@ -31,34 +31,45 @@ class AdminSite(DjangoAdminSite):
             app['models'].sort(key=lambda x: x['name'])
 
         # Move the 'store' app to the top.
-        store_app = next((app for app in app_list if app['app_label'] == 'store'), None)
-        if store_app:
-            app_list.remove(store_app)
-            app_list.insert(0, store_app)
-
-        # Move the 'reservations' app next to the 'store' app.
         orders_app = next((app for app in app_list if app['app_label'] == 'reservations'), None)
         if orders_app:
             app_list.remove(orders_app)
-            app_list.insert(1, orders_app)
-
+            app_list.insert(0, orders_app)
+        
         orders_app = next((app for app in app_list if app['app_label'] == 'catering'), None)
         if orders_app:
             app_list.remove(orders_app)
-            app_list.insert(2, orders_app)
+            app_list.insert(1, orders_app)
         
         orders_app = next((app for app in app_list if app['app_label'] == 'menu'), None)
         if orders_app:
             app_list.remove(orders_app)
-            app_list.insert(3, orders_app)
-        orders_app = next((app for app in app_list if app['app_label'] == 'footer'), None)
-        if orders_app:
-            app_list.remove(orders_app)
-            app_list.insert(4, orders_app)
-        orders_app = next((app for app in app_list if app['app_label'] == 'users'), None)
-        if orders_app:
-            app_list.remove(orders_app)
-            app_list.insert(5, orders_app)
+            app_list.insert(2, orders_app)
+
+        store_app = next((app for app in app_list if app['app_label'] == 'store'), None)
+        if store_app:
+            app_list.remove(store_app)
+            app_list.insert(3, store_app)
+        
+        blog_app = next((app for app in app_list if app['app_label'] == 'blog'), None)
+        if blog_app:
+            app_list.remove(blog_app)
+            app_list.insert(4, blog_app)
+        
+        heads_app = next((app for app in app_list if app['app_label'] == 'heads'), None)
+        if heads_app:
+            app_list.remove(heads_app)
+            app_list.insert(6, heads_app)
+
+        happening_app = next((app for app in app_list if app['app_label'] == 'happening'), None)
+        if happening_app:
+            app_list.remove(happening_app)
+            app_list.insert(5, happening_app)
+
+        footer_app = next((app for app in app_list if app['app_label'] == 'footer'), None)
+        if footer_app:
+            app_list.remove(footer_app)
+            app_list.insert(5, footer_app)
         return app_list
       
     

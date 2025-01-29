@@ -32,6 +32,10 @@ class Post(models.Model):
             plain_text_content = html.unescape(strip_tags(str(self.content.html)))
             self.short_description = plain_text_content[:150]
 
+            print(f"Short Description for '{self.title}':", self.short_description)
+
+
+
         # Optimize image before saving
         if self.image:
             img = Image.open(self.image)

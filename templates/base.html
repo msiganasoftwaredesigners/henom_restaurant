@@ -11,6 +11,87 @@
     {{ content.header_meta_data|safe }}
     {% endfor %}
     <title>{% block title %}{{ title }}{% endblock %}</title>
+
+
+    <!-- General Meta Tags -->
+<title>Henom Restaurant | All-You-Can-Eat, Outdoor Seating & Great Cocktails in Addis Ababa</title>
+<meta name="description" content="Enjoy an all-you-can-eat experience, outdoor seating, and expertly crafted cocktails at Henom Restaurant in Addis Ababa, Ethiopia. Indulge in delicious food and a relaxing ambiance." />
+<meta name="keywords" content="Henom Restaurant, all-you-can-eat Ethiopia, outdoor dining Addis Ababa, best cocktails Ethiopia, fine dining Ethiopia, romantic dining, Ethiopian cuisine, international dishes" />
+<meta name="author" content="Henom Restaurant" />
+<meta name="robots" content="index, follow" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#002147" />
+<meta name="msapplication-TileColor" content="#ffffff" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="Henom Restaurant" />
+<link rel="canonical" href="https://henomrestaurant.com" />
+
+<!-- Location Meta Tags -->
+<meta name="geo.region" content="ET-AA" />
+<meta name="geo.placename" content="Addis Ababa" />
+<meta name="geo.position" content="9.03;38.74" />
+<meta name="ICBM" content="9.03, 38.74" />
+
+<!-- Open Graph (OG) Meta Tags -->
+<meta property="og:title" content="Henom Restaurant | A Unique Dining Experience in Addis Ababa" />
+<meta property="og:description" content="Visit Henom Restaurant for an all-you-can-eat feast, outdoor seating, and signature cocktails. Perfect for dining with friends, family, or a romantic night out." />
+<meta property="og:image" content="https://henomrestaurant.com/media/images/contacts/henon_png_-_Copy.png" />
+<meta property="og:url" content="https://henomrestaurant.com" />
+<meta property="og:type" content="restaurant" />
+<meta property="og:locale" content="en_ET" />
+<meta property="og:site_name" content="Henom Restaurant" />
+
+<!-- Facebook Meta Tags -->
+<meta property="og:url" content="https://www.facebook.com/henom.restaurant/" />
+<meta property="og:image" content="https://henomrestaurant.com/media/images/contacts/henon_png_-_Copy.png" />
+<meta property="og:image:alt" content="Henom Restaurant Logo" />
+
+<!-- Instagram Meta Tags -->
+<meta property="og:url" content="https://www.instagram.com/henom_restaurant/" />
+<meta property="og:image" content="https://henomrestaurant.com/media/images/contacts/henon_png_-_Copy.png" />
+<meta property="og:image:alt" content="Henom Restaurant Instagram" />
+
+<!-- TikTok Meta Tags -->
+<meta property="og:url" content="https://www.tiktok.com/@henom_restaurant" />
+<meta property="og:image" content="https://henomrestaurant.com/media/images/contacts/henon_png_-_Copy.png" />
+<meta property="og:image:alt" content="Henom Restaurant TikTok" />
+
+<!-- Structured Data (JSON-LD) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Henom Restaurant",
+  "image": "https://henomrestaurant.com/media/images/contacts/henon_png_-_Copy.png",
+  "url": "https://henomrestaurant.com",
+  "telephone": "+251-966223344",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "2Q79+GHH, Addis Ababa",
+    "addressLocality": "Addis Ababa",
+    "addressRegion": "AA",
+    "postalCode": "1000",
+    "addressCountry": "Ethiopia"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "9.03",
+    "longitude": "38.74"
+  },
+  "servesCuisine": "Ethiopian, International",
+  "priceRange": "$$",
+  "openingHours": "Mo-Su 08:00-23:00",
+  "acceptsReservations": "True",
+  "menu": "https://henomrestaurant.com/menu",
+  "sameAs": [
+    "https://www.facebook.com/henom.restaurant/",
+    "https://www.instagram.com/henom_restaurant/",
+    "https://www.tiktok.com/@henom_restaurant"
+  ]
+}
+</script>
+
     <link rel="icon" type="image/png" href="{{ favicon.favicon_image.url }}">
 
     <!-- jQuery -->
@@ -42,12 +123,6 @@
             
     </style>
 
-    <script type="text/javascript">
-$(document).ready(function() {
-	// jQuery code
-
-});
-    </script>
 
     {% tailwind_css %}
 
@@ -59,33 +134,35 @@ $(document).ready(function() {
 {% endblock %}
 {% include 'includes/footer.html' %}
  {% include 'includes/topup.html' %} 
- <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const cards = document.querySelectorAll('.card');
-    
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-    
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                } else {
-                    entry.target.classList.remove('visible');
-                }
-            });
-        }, observerOptions);
-    
-        cards.forEach((card, index) => {
-            observer.observe(card);
-        });
-    });
-    </script>
-</body>
+ 
+
 {% for content in head_contents %}
     {{ content.footer_meta_data|safe }}
     {% endfor %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const cards = document.querySelectorAll('.card');
+        
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+        
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    } else {
+                        entry.target.classList.remove('visible');
+                    }
+                });
+            }, observerOptions);
+        
+            cards.forEach((card, index) => {
+                observer.observe(card);
+            });
+        });
+        </script>
+    </body>
 </html>

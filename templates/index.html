@@ -182,22 +182,7 @@
         </div>
       </div>
     </div>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const moreContent = document.getElementById('moreContent');
-        const toggleButton = document.getElementById('toggleButton');
-    
-        toggleButton.addEventListener('click', function() {
-          if (moreContent.classList.contains('hidden')) {
-            moreContent.classList.remove('hidden');
-            toggleButton.textContent = 'Read Less';
-          } else {
-            moreContent.classList.add('hidden');
-            toggleButton.textContent = 'Read More';
-          }
-        });
-      });
-    </script>
+
     <!-- Tailwind CSS Section with Title, Subtitle, and Button -->
     
   </section>
@@ -706,14 +691,32 @@
           },
         });
       </script>
+
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const moreContent = document.getElementById('moreContent');
+          const toggleButton = document.getElementById('toggleButton');
+      
+          toggleButton.addEventListener('click', function() {
+            if (moreContent.classList.contains('hidden')) {
+              moreContent.classList.remove('hidden');
+              toggleButton.textContent = 'Read Less';
+            } else {
+              moreContent.classList.add('hidden');
+              toggleButton.textContent = 'Read More';
+            }
+          });
+        });
+      </script>
   
       <script>
-        let page = 2; // start from the second page
-        let isLoading = false; // flag to prevent multiple simultaneous requests
+        let page = 2; 
+        let isLoading = false; 
         
         window.onscroll = function (ev) {
           if (!isLoading && window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-            isLoading = true; // set the flag to true to indicate that a request is in progress
+            isLoading = true; 
         
             fetch(`/store?page=${page}`)
               .then((response) => {

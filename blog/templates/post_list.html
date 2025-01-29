@@ -13,17 +13,20 @@
             <img class="w-full h-full object-cover" src="{{ post.image.url }}" alt="{{ post.title }}">
         </div>
         <div class="p-8">
-            <div class="uppercase tracking-wide text-md text-green-500 font-semibold">
+            <div class="uppercase tracking-wide text-md text-blue-950 font-semibold">
                 <a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a>
                 
             </div>
-            <p class="mt-2 text-gray-500">{{ post.short_description|safe }}</p>
+           <p class="mt-2 text-gray-500">{{ post.short_description }}</p>
         </div>
     </div>
     {% endfor %}
+
+   
+
 </div>
 <div class="max-w-6xl mx-auto px-4 sm:px-0 m-4">
-<a href="{% url 'home' %}" class="inline-block bg-green-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-200">
+<a href="{% url 'home' %}" class="inline-block bg-blue-950 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors duration-200">
     <i class="fas fa-arrow-left"></i> Back to shop
 </a>
 </div>
