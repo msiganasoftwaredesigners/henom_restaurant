@@ -56,22 +56,36 @@ class AdminSite(DjangoAdminSite):
             app_list.remove(blog_app)
             app_list.insert(4, blog_app)
         
-        heads_app = next((app for app in app_list if app['app_label'] == 'heads'), None)
-        if heads_app:
-            app_list.remove(heads_app)
-            app_list.insert(6, heads_app)
 
         happening_app = next((app for app in app_list if app['app_label'] == 'happening'), None)
         if happening_app:
             app_list.remove(happening_app)
             app_list.insert(5, happening_app)
 
+        heads_app = next((app for app in app_list if app['app_label'] == 'heads'), None)
+        if heads_app:
+            app_list.remove(heads_app)
+            app_list.insert(6, heads_app)
+
+        gallery_app = next((app for app in app_list if app['app_label'] == 'gallery'), None)
+        if gallery_app:
+            app_list.remove(gallery_app)
+            app_list.insert(8, gallery_app)
+        return app_list
+    
         footer_app = next((app for app in app_list if app['app_label'] == 'footer'), None)
         if footer_app:
             app_list.remove(footer_app)
-            app_list.insert(5, footer_app)
+            app_list.insert(7, footer_app)
+        return app_list
+    
+        video_gallery_app = next((app for app in app_list if app['app_label'] == 'video_gallery'), None)
+        if video_gallery_app:
+            app_list.remove(video_gallery_app)
+            app_list.insert(9, video_gallery_app)
         return app_list
       
+    
     
     def app_index(self, request, app_label, extra_context=None):
         app_list = self.get_app_list(request)

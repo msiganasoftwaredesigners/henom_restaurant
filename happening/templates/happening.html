@@ -23,21 +23,15 @@
       
   </style>
   
-  <div class="relative group bg-slate-100 overflow-hidden card mt-4">
+  <a href="{% url 'happening_detail' event.slug %}" class="relative group bg-slate-100 overflow-hidden card mt-4">
     <img src="{{ event.image.url }}" alt="{{ event.title }}" class="w-full h-80 object-cover custom-inclined transform transition-transform duration-300 group-hover:scale-110">
     <div class="p-4">
       <h3 class="text-lg font-semibold cinzel">{{ event.title }}, {{ event.event_date|date:"F j" }}</h3>
-      <p class="volkhov">{{ event.description }}</p>
+      <p class="volkhov">{{ event.description.html|safe }}</p>
     </div>
-  </div>
+  </a>
   {% endfor %}
   
-      
-      
-      
-  
-    
-
   </div>
 </div>
 </div>

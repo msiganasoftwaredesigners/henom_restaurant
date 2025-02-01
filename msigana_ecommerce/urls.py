@@ -30,6 +30,9 @@ urlpatterns = [
     path('hours-location/', views.hours_location, name='hours-location'),
     path('happenings/', include('happening.urls')),
     path("accounts/profile/", views.update_profile, name="users_profiles"),
+    path("gallery/", include("gallery.urls")),
+    path("video-gallery/", include("video_gallery.urls")),
+    path('main_video/', include('main_video.urls')),
    
 
 ]

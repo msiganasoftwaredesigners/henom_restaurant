@@ -5,13 +5,25 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from django.http import HttpResponse
 from django.conf import settings
+from main_video.models import Video
 import os
-
 def home(request):
     products = Product.objects.all().filter(product_is_available=True)
+    video = Video.objects.first()  # Get the first available video
+
+    # Get the embedded URLs for different device types
+    mobile_video_url = video.get_embedded_url('mobile')
+    tablet_video_url = video.get_embedded_url('tablet')
+    desktop_video_url = video.get_embedded_url('desktop')
+
     context = {
-        'products': products
+        'products': products,
+        'video': video,  # Add video to the context for reference if needed
+        'mobile_video_url': mobile_video_url,
+        'tablet_video_url': tablet_video_url,
+        'desktop_video_url': desktop_video_url
     }
+
     return render(request, 'index.html', context)
 
 def about_us(request):

@@ -25,8 +25,8 @@
                 <a href="#" id="gallery-link" class="hover:text-white text-white text-lg xl:text-xl">Gallery</a>
                 <div id="gallery-dropdown" class="absolute hidden  w-[120px] left-0 top-full transition-all duration-300 ease-in-out overflow-hidden z-50 bg-blue-950 shadow-lg px-0 pt-4">
                   <div class="p-4 px-32 text-center">
-                    <a href="#" class="block py-1 text-white text-lg xl:text-xl hover:text-slate-400">Photo</a>
-                    <a href="#" class="block py-1  text-white text-lg xl:text-xl hover:text-slate-400">Video</a>
+                    <a href="{% url 'gallery' %}" class="block py-1 text-white text-lg xl:text-xl hover:text-slate-400">Photo</a>
+                    <a href="{% url 'video-gallery' %}" class="block py-1  text-white text-lg xl:text-xl hover:text-slate-400">Video</a>
                   </div>
                 </div>
               </li>
