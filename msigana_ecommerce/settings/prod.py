@@ -1,7 +1,7 @@
 from .base import *
 from decouple import  config
 
-DEBUG = True
+DEBUG = False
 
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS_PROD').split(',')
