@@ -28,15 +28,17 @@
 
 
         <nav class="hidden sm:flex space-x-12 relative">
-            <a href="{% url 'hours-location' %}" class="text-white text-lg xl:text-xl hover:text-slate-200 transition volkhov">Hours & Location</a>
-            <a href="{% url 'menus' %}" class="text-white text-lg xl:text-xl hover:text-slate-200 transition volkhov">Menu</a>
-            <a href="{% url 'happenings' %}" class="text-white text-lg xl:text-xl hover:text-slate-200 transition volkhov">Happenings</a>
-            <a href="{% url 'catering' %}" class="text-white text-lg xl:text-xl hover:text-slate-200 transition volkhov">Catering</a>
-            <a href="{% url 'about-us' %}" class="text-white text-lg xl:text-xl hover:text-slate-200 transition volkhov">About Us</a>
-            <a href="{% url 'post_list' %}" class="text-white text-lg xl:text-xl hover:text-slate-200 transition volkhov">Blogs</a>
-            <a href="{% url 'reservation' %}" class="text-white text-lg xl:text-xl hover:text-slate-200 transition volkhov">Reservations</a>
-            <ul><li class="relative group">
-                <a href="#" id="gallery-link" class="hover:text-white text-white text-lg xl:text-xl volkhov">Gallery</a>
+            <a href="{% url 'hours-location' %}" class="text-white text-base xl:text-lg hover:text-slate-200 transition volkhov">Hours & Location</a>
+            <a href="{% url 'menus' %}" class="text-white text-base xl:text-lg hover:text-slate-200 transition volkhov">Menu</a>
+            <a href="{% url 'happenings' %}" class="text-white text-base xl:text-lg hover:text-slate-200 transition volkhov">Happenings</a>
+            <a href="{% url 'catering' %}" class="text-white text-base xl:text-lg hover:text-slate-200 transition volkhov">Catering</a>
+            <a href="{% url 'about-us' %}" class="text-white text-base xl:text-lg hover:text-slate-200 transition volkhov">About Us</a>
+            <a href="{% url 'post_list' %}" class="text-white text-base xl:text-lg hover:text-slate-200 transition volkhov">Blogs</a>
+            <a href="{% url 'reservation' %}" class="text-white text-base xl:text-lg hover:text-slate-200 transition volkhov">Reservations</a>
+            <a href="{% url 'gallery' %}" class="text-white text-base xl:text-lg hover:text-slate-200 transition volkhov">photo</a>
+            <a href="{% url 'video-gallery' %}" class="text-white text-base xl:text-lg hover:text-slate-200 transition volkhov">Video</a>
+            {% comment %} <ul><li class="relative group">
+                <a href="#" id="gallery-link" class="hover:text-white text-white text-base xl:text-lg volkhov">Video</a>
                 <div id="gallery-dropdown" class="absolute hidden  w-[120px] left-0 top-full transition-all duration-300 ease-in-out overflow-hidden z-50 bg-blue-950 shadow-lg px-0 pt-4">
                   <div class="p-4 pt-0 px-32 text-center">
                     <a href="{% url 'gallery' %}" class="block py-1 text-white text-lg xl:text-xl hover:text-slate-400 volkhov">Photo</a>
@@ -44,9 +46,9 @@
                   </div>
                 </div>
               </li>
-            </ul>
+            </ul> {% endcomment %}
            
-            <script>
+            {% comment %} <script>
                 document.addEventListener('DOMContentLoaded', function() {
                   // Show dropdown on hover
                   const group = document.querySelector('.group');
@@ -70,11 +72,11 @@
                     galleryDropdown.classList.toggle('block');
                   });
                 });
-              </script>
+              </script> {% endcomment %}
               
         </nav>
         <div class="space-x-4  md:space-x-12 flex items-center pl-64  md:pl-0 ">
-            <script>
+            {% comment %} <script>
                 $(document).ready(function() {
                     $(".group").hover(
                         function() {
@@ -85,61 +87,9 @@
                         }
                     );
                 });
-            </script>
+            </script>  {% endcomment %}
     
-            <script>
-                $(document).ready(function() {
-                    $('#filter-button').click(function() {
-                        $('#dropdown-content').removeClass('hidden');
-                    });
-            
-                    $('#close-button').click(function() {
-                        $('#dropdown-content').addClass('hidden');
-                        $('#filter-button').show();
-                    });
-
-                    $('.category-button').click(function() {
-                        // Remove the 'bg-gray-600' class from all category buttons
-                        $('.category-button').removeClass('bg-gray-400 text-white');
-                    
-                        // Add the 'bg-gray-600' class to the clicked button
-                       $(this).addClass('bg-gray-400 text-white');
-
-                    // Store the selected category in localStorage
-                    var category = $(this).val();
-                    if (category != '') {
-                        localStorage.setItem('selectedCategory', category);
-                    } else {
-                        localStorage.removeItem('selectedCategory');
-                    }
-                    //localStorage.setItem('selectedCategory', $(button).val());
-                    
-                    // Set the value of a hidden input field to the value of the clicked button
-                    if ($(this).val() != '') {
-                        $('#category-input').val($(this).val());
-                    }
-                });
-
-                
-
-                      // Highlight the selected category button on page load
-                    var selectedCategory = localStorage.getItem('selectedCategory');
-                    if (selectedCategory) {
-                        $('.category-button[value="' + selectedCategory + '"]').addClass('bg-gray-400 text-white');
-                    }
-
-                    // Remove the selected category from localStorage when the Apply button is clicked
-                    $('#filter-form').submit(function() {
-                        localStorage.removeItem('selectedCategory');
-                    });
-                    $(document).click(function(event) {
-                        if (!$(event.target).closest('#dropdown-content').length && !$(event.target).is('#filter-button')) {
-                            $('#dropdown-content').addClass('hidden');
-                            $('#filter-button').show();
-                        }
-                    });
-                });
-            </script>
+          
            
             <a href="{% url 'happenings' %}" class="text-lg xl:text-xl ml-auto justify-self-end text-white hover:text-yellow-600 transition pl-4 pr-2 volkhov md:hidden">
                 Events
