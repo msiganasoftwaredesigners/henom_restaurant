@@ -22,11 +22,11 @@
             <a href="{% url 'post_list' %}" class="text-white text-lg xl:text-xl hover:text-slate-200 transition volkhov">Blogs</a>
             <a href="{% url 'reservation' %}" class="text-white text-lg xl:text-xl hover:text-slate-200 transition volkhov">Reservations</a>
             <ul><li class="relative group">
-                <a href="#" id="gallery-link" class="hover:text-white text-white text-lg xl:text-xl">Gallery</a>
+                <a href="#" id="gallery-link" class="hover:text-white text-white text-lg xl:text-xl volkhov">Gallery</a>
                 <div id="gallery-dropdown" class="absolute hidden  w-[120px] left-0 top-full transition-all duration-300 ease-in-out overflow-hidden z-50 bg-blue-950 shadow-lg px-0 pt-4">
                   <div class="p-4 px-32 text-center">
-                    <a href="{% url 'gallery' %}" class="block py-1 text-white text-lg xl:text-xl hover:text-slate-400">Photo</a>
-                    <a href="{% url 'video-gallery' %}" class="block py-1  text-white text-lg xl:text-xl hover:text-slate-400">Video</a>
+                    <a href="{% url 'gallery' %}" class="block py-1 text-white text-lg xl:text-xl hover:text-slate-400 volkhov">Photo</a>
+                    <a href="{% url 'video-gallery' %}" class="block py-1  text-white text-lg xl:text-xl hover:text-slate-400 volkhov">Video</a>
                   </div>
                 </div>
               </li>
@@ -180,6 +180,9 @@
                 <a class="text-lg text-gray-700 mb-1 pl-4 pt-4 volkhov" href="{% url 'catering' %}">Catering</a>
                 <a class="text-lg  text-gray-700 mb-1 volkhov pl-4 pt-4" href="{% url 'about-us'  %}">About Us</a>
                 <a class="text-lg  text-gray-700 mb-1 volkhov pl-4 pt-4" href="{% url 'reservation' %}">Reservations</a>
+                <a class="text-lg text-gray-700 mb-1 pl-4 pt-4 volkhov" href="{% url 'gallery' %}">Photo Gallery</a>
+                <a class="text-lg  text-gray-700 mb-1 volkhov pl-4 pt-4" href="{% url 'video-gallery'  %}">Video Gallery</a>
+                <a class="text-lg text-gray-700 mb-1 pl-4 pt-4 volkhov" href="{% url 'post_list' %}">Blogs</a>
                 {% comment %} <a class="text-lg font-semibold text-gray-700 mb-1 font-roboto pl-4 pt-4" href="{% url 'online-order' %}">Online Order</a> {% endcomment %}
                 {% comment %} {% for category in links %}
                 <a class="block px-4 py-2 font-medium transition hover:bg-gray-100 category-link capitalize" href="{{ category.get_url }}">{{category.category_name}}</a>
