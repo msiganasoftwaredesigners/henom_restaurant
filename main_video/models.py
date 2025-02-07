@@ -5,7 +5,6 @@ class Video(models.Model):
     mobile_video_url = models.URLField()
     tablet_video_url = models.URLField()
     desktop_video_url = models.URLField()
-    thumbnail_image = models.ImageField(upload_to='video_thumbnails/')
     
     def __str__(self):
         return f"Video: {self.mobile_video_url} - {self.tablet_video_url} - {self.desktop_video_url}"
