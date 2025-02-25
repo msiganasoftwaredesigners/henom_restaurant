@@ -72,7 +72,7 @@
                     <!-- Use Flexbox for name and price layout -->
                     <div class="flex justify-between items-start">
                         <h3 class="font-semibold cinzel flex-1 pr-4" style="flex: 2;">{{ item.name }}</h3>
-                        <span class="text-blue-950" style="flex: 1; text-align: right;">{{ item.price }} birr</span>
+                        <span class="text-blue-950" style="flex: 1; text-align: right;">{% if item.price is not None %}{{ item.price }} birr{% endif %}</span>
                     </div>
                     <p>{{ item.description }}</p>
                     <hr class="h-0.5 my-1 bg-blue-950 border-0 dark:bg-gray-700">
@@ -115,7 +115,7 @@
                     <!-- Use Flexbox for name and price layout -->
                     <div class="flex justify-between items-start">
                         <h3 class="font-semibold flex-1 pr-4" style="flex: 2;">{{ item.name }}</h3>
-                        <span class="text-blue-950" style="flex: 1; text-align: right;">{{ item.price }} birr</span>
+                        <span class="text-blue-950" style="flex: 1; text-align: right;">{% if item.price is not None %}{{ item.price }} birr{% endif %}</span>
                     </div>
                     <p class="me">{{ item.description }}</p>
                     <hr class="h-0.5 my-1 bg-blue-950 border-0 dark:bg-gray-700">
