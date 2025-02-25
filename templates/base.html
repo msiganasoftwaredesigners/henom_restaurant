@@ -106,7 +106,6 @@
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
     <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
-    <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
     {% comment %} <script src="{% static 'js/wow.min.js' %}"></script> {% endcomment %}
     <style>
@@ -126,14 +125,14 @@
 
     {% tailwind_css %}
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-G5JKHEGP6L"></script>
+{% comment %} <script async src="https://www.googletagmanager.com/gtag/js?id=G-G5JKHEGP6L"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'G-G5JKHEGP6L');
-</script>
+</script> {% endcomment %}
 
 </head>
 <body>

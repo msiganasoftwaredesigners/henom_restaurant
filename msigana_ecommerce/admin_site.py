@@ -9,6 +9,12 @@ class AdminSite(DjangoAdminSite):
     site_header = 'Henom Login'
     site_title = 'Henom Admin'
 
+    def each_context(self, request):
+        context = super().each_context(request)
+        # Always include the Google Analytics link globally in the admin context
+        context['google_analytics_link'] = '<a href="https://analytics.google.com/analytics/web/#/p475799612/reports/intelligenthome" target="_blank">Google Analytics</a>'
+        return context
+
     def get_app_list(self, request):
         """
         Return a sorted list of all the installed apps that have been registered in this site.

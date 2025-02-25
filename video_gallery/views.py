@@ -40,7 +40,7 @@ def video_list(request):
         page_number = 1  # If the page parameter is invalid, fallback to page 1
 
     # Fetch all videos from the database
-    videos = Video.objects.all()
+    videos = Video.objects.all().order_by('-uploaded_at')
 
     # Paginate the videos (6 videos per page)
     paginator = Paginator(videos, 6)

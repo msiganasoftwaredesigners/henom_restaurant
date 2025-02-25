@@ -2,7 +2,7 @@
 {% load i18n admin_urls %}
 
 {% block object-tools-items %}
-    <li>
+    {% comment %} <li>
         <a href="{% url 'export_orders_xlsx'  %}" class="btn btn-primary">
             {% trans "Export Orders as Excel" %}
         </a>
@@ -11,6 +11,10 @@
         <a href="{% url 'export_orders_pdf'  %}" class="btn btn-primary">
             {% trans "Export Orders as PDF" %}
         </a>
+    </li> {% endcomment %}
+
+    <li>
+        {{ google_analytics_link|safe }}
     </li>
-    {{ block.super }}
+
 {% endblock %}

@@ -1,3 +1,4 @@
+//statuc/js/admin.js
 document.addEventListener("DOMContentLoaded", (event) => {
   const checkboxes = document.querySelectorAll(
     '.field-is_main input[type="checkbox"]'

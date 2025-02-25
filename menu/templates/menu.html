@@ -40,7 +40,7 @@
     </div>
 
     
-    <div id="food-menu" class="menu-cards max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 bg-white shadow-lg rounded-lg overflow-hidden transition-transform duration-500">
+    {% comment %} <div id="food-menu" class="menu-cards max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 bg-white shadow-lg rounded-lg overflow-hidden transition-transform duration-500">
         <!-- Loop through food menu groups -->
         {% for group, items in food_menu_groups.items %}
         <div class="menu-card bg-white shadow-lg rounded-lg overflow-hidden border-2 border-blue-950 mb-6 mx-3">
@@ -58,9 +58,32 @@
             </div>
         </div>
         {% endfor %}
+    </div> {% endcomment %}
+    <div id="food-menu" class="menu-cards max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 bg-white shadow-lg rounded-lg overflow-hidden transition-transform duration-500">
+        <!-- Loop through food menu groups -->
+        {% for group, items in food_menu_groups.items %}
+        <div class="menu-card bg-white shadow-lg rounded-lg overflow-hidden border-2 border-blue-950 mb-6 mx-3">
+            <div class="p-6">
+                <div class="bg-slate-500 rounded-md">
+                    <h2 class="text-xl font-bold mb-4 py-2 text-center text-white cinzel">{{ group }}</h2>
+                </div>
+                {% for item in items %}
+                <div class="mb-4">
+                    <!-- Use Flexbox for name and price layout -->
+                    <div class="flex justify-between items-start">
+                        <h3 class="font-semibold cinzel flex-1 pr-4" style="flex: 2;">{{ item.name }}</h3>
+                        <span class="text-blue-950" style="flex: 1; text-align: right;">{{ item.price }} birr</span>
+                    </div>
+                    <p>{{ item.description }}</p>
+                    <hr class="h-0.5 my-1 bg-blue-950 border-0 dark:bg-gray-700">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
     </div>
     
-    <div id="drink-menu" class="menu-cards max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 bg-white shadow-lg rounded-lg overflow-hidden transition-transform duration-500">
+    {% comment %} <div id="drink-menu" class="menu-cards max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 bg-white shadow-lg rounded-lg overflow-hidden transition-transform duration-500">
         <!-- Loop through drink menu groups -->
         {% for group, items in drink_menu_groups.items %}
         <div class="menu-card bg-white shadow-lg rounded-lg overflow-hidden border-2 border-blue-950 mb-6 mx-3">
@@ -78,8 +101,30 @@
             </div>
         </div>
         {% endfor %}
+    </div> {% endcomment %}
+    <div id="drink-menu" class="menu-cards max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 bg-white shadow-lg rounded-lg overflow-hidden transition-transform duration-500">
+        <!-- Loop through drink menu groups -->
+        {% for group, items in drink_menu_groups.items %}
+        <div class="menu-card bg-white shadow-lg rounded-lg overflow-hidden border-2 border-blue-950 mb-6 mx-3">
+            <div class="p-6">
+                <div class="bg-slate-500 rounded-md">
+                    <h2 class="text-xl font-bold mb-4 py-2 text-center text-white mks">{{ group }}</h2>
+                </div>
+                {% for item in items %}
+                <div class="mb-4">
+                    <!-- Use Flexbox for name and price layout -->
+                    <div class="flex justify-between items-start">
+                        <h3 class="font-semibold flex-1 pr-4" style="flex: 2;">{{ item.name }}</h3>
+                        <span class="text-blue-950" style="flex: 1; text-align: right;">{{ item.price }} birr</span>
+                    </div>
+                    <p class="me">{{ item.description }}</p>
+                    <hr class="h-0.5 my-1 bg-blue-950 border-0 dark:bg-gray-700">
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
     </div>
-    
     
     
    

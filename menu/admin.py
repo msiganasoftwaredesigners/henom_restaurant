@@ -62,6 +62,7 @@ class MenuItemAdminForm(forms.ModelForm):
         if self.instance and self.instance.pk:
             self.fields['menu_group'].queryset = MenuGroup.objects.filter(menu_type=self.instance.menu_type)
 
+
 class MenuItemAdmin(admin.ModelAdmin):
     form = MenuItemAdminForm
     list_display = ('id', 'name', 'menu_type', 'menu_group', 'price', 'slug')
@@ -71,16 +72,19 @@ class MenuItemAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
 
     def save_model(self, request, obj, form, change):
+        # If slug is not set, generate it based on the name
         if not obj.slug:
             obj.slug = generate_slug(obj.name)
-        
+
+        # Check if a MenuItem with the same slug, menu_type, and menu_group exists
         if MenuItem.objects.filter(menu_type=obj.menu_type, menu_group=obj.menu_group, slug=obj.slug).exists():
-            if not change or (change and obj.pk):
-                return
-            else:
+            if not change:
+                # If it's not a change (i.e., new object), assign a new pk to avoid collision
                 obj.pk = None
 
+        # Save the object to the database
         super().save_model(request, obj, form, change)
+
 
 admin_site.register(MenuItem, MenuItemAdmin)
 admin_site.register(MenuCategory, MenuCategoryAdmin)

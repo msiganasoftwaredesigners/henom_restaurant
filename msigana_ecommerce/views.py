@@ -8,7 +8,10 @@ from django.conf import settings
 from main_video.models import Video
 import os
 def home(request):
-    products = Product.objects.all().filter(product_is_available=True)
+    #products = Product.objects.filter(product_is_available=True).order_by('-product_modified_date', '-product_created_date')
+    products = Product.objects.filter(product_is_available=True).order_by('-product_modified_date', '-product_created_date')
+    # for pro in products:
+    #     print(f" valueeeeeeeeeeeee: {pro.product_modified_date}, {pro.product_created_date}, {pro.product_name}")
     video = Video.objects.first()  # Get the first available video
 
     # Get the embedded URLs for different device types
