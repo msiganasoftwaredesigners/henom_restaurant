@@ -1,7 +1,9 @@
 from django.urls import path
 from . import views
+from .views import PostListAPIView, PostDetailAPIView
 
 urlpatterns = [
-    path('posts/', views.post_list, name='post_list'),
-    path('posts/<slug:slug>/', views.post_detail, name='post_detail'),
+    path('', views.blog_page, name='blog'),  # <-- blog HTML page
+    path('api/posts/', PostListAPIView.as_view(), name='post_list'),  # <-- API endpoint
+    path('api/posts/<slug:slug>/', PostDetailAPIView.as_view(), name='post_detail'),
 ]
