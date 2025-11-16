@@ -27,7 +27,7 @@ def catering(request):
                 "Best regards,\n"
                 "Henom Restaurant"
             )
-            recipient_email = 'info@henomrestaurant.com'
+            recipient_email = 'info@henomrestaurants.com'
             send_mail(
                 subject,
                 message,

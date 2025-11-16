@@ -82,11 +82,11 @@ MIDDLEWARE = [
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'mail.henomrestaurant.com' 
+EMAIL_HOST = 'mail.henomrestaurants.com' 
 EMAIL_PORT = 465  
 EMAIL_USE_SSL = True  
 EMAIL_USE_TLS = False  
-EMAIL_HOST_USER = 'info@henomrestaurant.com'  
-EMAIL_HOST_PASSWORD = 'henomrestauranT11@#'  
-DEFAULT_FROM_EMAIL = 'info@henomrestaurant.com'  
-ADMIN_EMAIL = 'info@henomrestaurant.com'  
+EMAIL_HOST_USER = 'info@henomrestaurants.com'  
+EMAIL_HOST_PASSWORD = 'henomrestaurants11@#'  
+DEFAULT_FROM_EMAIL = 'info@henomrestaurants.com'  
+ADMIN_EMAIL = 'info@henomrestaurants.com'  
