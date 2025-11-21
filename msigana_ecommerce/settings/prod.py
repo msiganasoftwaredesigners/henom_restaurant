@@ -4,7 +4,8 @@ from decouple import  config
 DEBUG = False
 
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS_PROD').split(',')
+# ALLOWED_HOSTS = config('ALLOWED_HOSTS_PROD').split(',')
+ALLOWED_HOSTS=["henomrestaurants.com", "www.henomrestaurants.com"]
 SECRET_KEY = config('SECRET_KEY')
 
 
