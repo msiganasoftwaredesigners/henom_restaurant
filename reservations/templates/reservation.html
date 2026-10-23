@@ -160,12 +160,14 @@
                 error: function(xhr, status, error) {
                     console.log(xhr);  // Log the xhr object to the console
                     var response = xhr.responseJSON;
-                    if (response.errors) {
+                    if (response && response.errors) {
                         var errorMessages = '';
                         $.each(response.errors, function(key, value) {
                             errorMessages += '<p class="text-red-500">' + value[0] + '</p>';
                         });
                         $('#reservation-message').html(errorMessages);
+                    } else if (xhr.status >= 500 || xhr.status === 0) {
+                        $('#reservation-message').html('<p class="text-red-500">Our server is busy right now. Please try again in a moment or call us to book.</p>');
                     } else {
                         $('#reservation-message').html('<p class="text-red-500">Error occurred while processing your request.</p>');
                     }
